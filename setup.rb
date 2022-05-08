@@ -13,7 +13,7 @@ class FedenaDocker
   def self.setup
     DOCKER_FILES.each do |file_name|
       print "Downloading #{file_name}...\n"
-      system(`curl -H -s -L #{GITHUB_PATH}/#{file_name} -o #{file_name}`)
+      system(`curl -O #{GITHUB_PATH}/#{file_name}`)
     end
   end
 end
