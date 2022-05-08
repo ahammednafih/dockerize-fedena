@@ -1,0 +1,13 @@
+.gitignore
+mariadb_data/
+database.yml.docker
+docker-compose.yml
+Dockerfile
+Dockerfile.mariadb
+entrypoint.sh
+fedena.sql
+init.sql
+log
+.DS_Store
+tmp
+public

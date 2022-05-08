@@ -1,0 +1,10 @@
+FROM mariadb
+
+RUN apt-get update; apt-get install -y build-essential
+
+ENV MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=yes
+ENV MARIADB_DATABASE=fedena
+ENV MARIADB_USER=root
+
+COPY ./init.sql /docker-entrypoint-initdb.d/init.sql
+COPY ./fedena.sql /docker-entrypoint-initdb.d/data.sql

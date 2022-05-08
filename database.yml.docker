@@ -1,0 +1,19 @@
+default: &default
+  host: mariadb
+  adapter: mysql2
+  database: fedena
+  username: fedena
+  password: fedena
+  encoding: utf8
+
+development:
+  <<: *default
+
+test: &test
+  <<: *default
+
+production:
+  <<: *default
+
+cucumber:
+  <<: *test
