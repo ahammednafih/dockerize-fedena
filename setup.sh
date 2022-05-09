@@ -11,8 +11,9 @@ docker_files=( ".gitignore"
 for docker_file in "${docker_files[@]}" ; do
   echo "Downloading $docker_file ..."
   curl -O $github_path/$docker_file
-
-  # Create dummy data dump file if not exist
-  touch fedena.sql
 done
 
+# Create dummy data dump file if not exist
+touch fedena.sql
+
+echo "Done!"
