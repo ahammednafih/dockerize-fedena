@@ -11,3 +11,6 @@ log
 .DS_Store
 tmp
 public
+setup.sh
+vendor/plugins/acts_as_*
+vendor/plugins/fedena_*
