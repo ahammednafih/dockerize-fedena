@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fconnect
+    command: ["rails", "server", "-p", "3001", "-b", "0.0.0.0"]
+    volumes:
+      - .:/myapp
+      - gem_cache:/usr/local/bundle/gems
+    ports:
+      - "3001:3001"
+    links:
+      - "db:mariadb"
+
+  db:
+    image: fedena_mariadb
+
+volumes:
+  gem_cache:

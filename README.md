@@ -85,3 +85,21 @@ docker rm -f $(docker ps -a -q)
 ```shell
 docker volume rm $(docker volume ls -q)
 ```
+#
+### Fconnect
+
+- Using docker-compose
+```shell
+docker compose up
+```
+
+- Standalone
+
+Start the mariadb container, then build the fconnect image
+```shell
+docker build -t fconnect .
+```
+Run the container with link to mariadb
+```shell
+docker run -p3001:3001 --link <mariadb_image_name>:mariadb fconnect
+```
