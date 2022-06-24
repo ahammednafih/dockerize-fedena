@@ -1,4 +1,4 @@
-ROM ruby:2.4.0
+FROM ruby:2.4.0
 
 ENV APP_PATH /myapp
 ENV RAILS_PORT 3001
