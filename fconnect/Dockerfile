@@ -1,11 +1,11 @@
-FROM ruby:2.4.0
+ROM ruby:2.4.0
 
 ENV APP_PATH /myapp
 ENV RAILS_PORT 3001
 ENV RAILS_ENV development
 ENV BUNDLE_PATH /usr/local/bundle
-ENV GEM_PATH /usr/local/bundle
 ENV GEM_HOME /usr/local/bundle
+ENV PATH $GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH
 
 RUN apt-get update -qq && apt-get install -y \
       software-properties-common \
@@ -27,14 +27,14 @@ WORKDIR $APP_PATH
 
 COPY Gemfile ./
 
+COPY . .
+
 RUN gem install bundler -v '1.14.6'
 RUN bundle check || bundle install --jobs 20 --retry 5
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
-
-COPY . .
 
 EXPOSE $RAILS_PORT
 
