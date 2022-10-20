@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  mariadb_bio_attendance:
+    build:
+      context: .
+      dockerfile: Dockerfile.mariadb
+    container_name: fedena_bio_attendance_db
+    restart: on-failure
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mariadb_bio_attendance_data:/var/lib/mysql
+  web_bio_attendance:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fedena_bio_attendance_app
+    command: bash -c "rm -f tmp/pids/server.pid && rails server -e production -p 5001 -b '0.0.0.0'"
+    volumes:
+      - .:/myapp
+      - gem_cache:/usr/local/bundle/gems
+    ports:
+      - "5001:5001"
+    depends_on:
+      - mariadb_bio_attendance
+
+volumes:
+  gem_cache:
+  mariadb_bio_attendance_data:
