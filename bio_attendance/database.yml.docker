@@ -4,7 +4,7 @@ default: &default
   pool: 5
   username: fedena
   password: fedena
-  host: mariadb
+  host: mariadb_bio_attendance
   database: fedena_bio_attendance
 
 development:
